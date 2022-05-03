@@ -100,8 +100,8 @@ msg = EmailMessage()
 
 yf.pdr_override() 
 
-#start date of datat 
-start =dt.datetime(2022,4,20)
+#start date 
+start =dt.datetime(2022,1,31)
 now = dt.datetime.now()
 
 stock="LULU"
@@ -110,14 +110,14 @@ TargetPrice=360
 #subject and email 
 msg['Subject'] = 'Alert on '+ stock+'!'
 msg['From'] = EMAIL_ADDRESS
-msg['To'] = 'desiredrecepient@gmail.com'
+msg['To'] = 'recepient@gmail.com'
 
 #to help not send too many emails 
 alerted=False
 
 #begining of loop 
 while 1:
-#access to most recent sotck prices 
+#access to most recent stock prices 
 	df = pdr.get_data_yahoo(stock, start, now)
 	currentClose=df["Adj Close"][-1]
     
@@ -135,8 +135,8 @@ while 1:
 		print(message)
 # setting message       
 		msg.set_content(message)
-#Here in the following block until the email content (@ line 65) below is optional code if you want to send documents in your code. 
-		files=[r"C:\\Users\\RSizelove\\Fin510V\\ALERT\\FundamentalList.xlsx"]
+#Here in the following block until the email content below is optional code if you want to send documents in your code. 
+		files=[r"C:\\Users\\RSizelove\\Fin510V\\alert\\FundamentalList.xlsx"]
 #loop 
 		for file in files:
 			with open(file,'rb') as f:
